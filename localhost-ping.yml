@@ -1,0 +1,6 @@
+---
+- name: Connectivity Check
+  hosts: all
+  tasks:
+   - name: Ping check
+     local_action: ping -c 1 -w 2 {{ ansible_host }}
