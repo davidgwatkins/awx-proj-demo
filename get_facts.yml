@@ -1,0 +1,8 @@
+---
+- name: Get Facts
+  hosts: all
+  tasks:
+    - name: Gather only the config and default facts
+      arista.eos.eos_facts:
+        gather_subset:
+          - min
