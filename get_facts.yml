@@ -2,7 +2,12 @@
 - name: Get Facts
   hosts: all
   tasks:
-    - name: Gather only the config and default facts
+    - name: Get minimum facts
       arista.eos.eos_facts:
         gather_subset:
           - min
+      register: facts
+      
+    - name: Display version
+      debug:
+        msg: "{{facts.ansible_facts.ansible_net_hostname}} - EOS Version {{facts.ansible_facts.ansible_net_version}}."
